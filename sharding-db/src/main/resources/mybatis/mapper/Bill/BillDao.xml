@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bosssoft.nontax.dao.BillDao">
+
+    <insert id="insertBill" parameterType="com.bosssoft.nontax.entity.Bill">
+        INSERT INTO une_cbill(id,agencode,date) VALUES (#{id},#{agencode},#{date})
+    </insert>
+
+    <select id="queryBill" parameterType="com.bosssoft.nontax.entity.Bill" resultType="com.bosssoft.nontax.entity.Bill">
+        SELECT * FROM une_cbill WHERE  agencode = #{agencode} AND date = #{date} AND id = #{id}
+    </select>
+
+    <update id="updateBill" parameterType="com.bosssoft.nontax.entity.Bill">
+        UPDATE une_cbill
+        <set>
+            <if test="no != null and no != ''" >no = #{no}</if>
+        </set>
+        WHERE agencode = #{agencode} AND date = #{date}
+    </update>
+
+    <select id="queryBills" parameterType="com.bosssoft.nontax.entity.Bill" resultType="com.bosssoft.nontax.entity.Bill">
+        SELECT * FROM une_cbill WHERE  agencode = #{agencode} AND date > #{date} AND id = #{id}
+    </select>
+
+</mapper>
