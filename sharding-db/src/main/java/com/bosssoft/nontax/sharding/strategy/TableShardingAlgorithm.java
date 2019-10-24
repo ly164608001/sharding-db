@@ -11,6 +11,11 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
+/**
+ * @desc 票据表分表算法
+ * @author ly
+ * @date 2019-10-24
+ */
 @Slf4j
 public class TableShardingAlgorithm implements PreciseShardingAlgorithm<String>, RangeShardingAlgorithm<String> {
 

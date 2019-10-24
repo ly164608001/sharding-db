@@ -2,6 +2,7 @@ package com.bosssoft.nontax.controller;
 
 import com.bosssoft.nontax.entity.Bill;
 import com.bosssoft.nontax.service.BillService;
+import com.bosssoft.nontax.sharding.strategy.util.IdGenerator;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,10 +16,13 @@ public class BillController {
     @Resource
     private BillService billService;
 
+    @Resource
+    private IdGenerator idGenerator;
+
     @RequestMapping(value = "/save", method = RequestMethod.GET)
     public Bill saveBill(@RequestParam("agencode") String agencode){
         Bill bill = new Bill();
-        bill.setId(1l);
+        bill.setId(idGenerator.snowflakeId());
         bill.setAgencode(agencode);
         bill.setDate("2018-01-01");
         billService.insertBill(bill);

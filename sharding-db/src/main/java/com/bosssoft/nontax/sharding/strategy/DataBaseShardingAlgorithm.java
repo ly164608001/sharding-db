@@ -13,6 +13,11 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedHashSet;
 
+/**
+ * @desc 默认分库算法
+ * @author ly
+ * @date 2019-10-24
+ */
 @Slf4j
 public class DataBaseShardingAlgorithm implements PreciseShardingAlgorithm<String>, RangeShardingAlgorithm<String> {
 
