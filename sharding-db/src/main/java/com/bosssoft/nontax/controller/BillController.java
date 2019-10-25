@@ -33,6 +33,7 @@ public class BillController {
     @ResponseBody
     public Bill queryBill(){
         Bill bill = new Bill();
+        bill.setId(1187301495733878784l);
         bill.setAgencode("350518");
         bill.setDate("2018-01-01");
         return billService.queryBill(bill);

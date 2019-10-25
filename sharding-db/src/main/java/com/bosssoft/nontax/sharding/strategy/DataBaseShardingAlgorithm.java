@@ -44,8 +44,6 @@ public class DataBaseShardingAlgorithm implements PreciseShardingAlgorithm<Strin
     public Collection<String> doSharding(Collection<String> availableTargetNames, RangeShardingValue<String> shardingValue) {
         log.info("Range collection:" + JSON.toJSONString(availableTargetNames) + ",rangeShardingValue:" + JSON.toJSONString(shardingValue));
         Collection<String> dbs = new LinkedHashSet<>(availableTargetNames.size());
-        Range<String> range = (Range<String>) shardingValue.getValueRange();
-
         return dbs;
     }
 }

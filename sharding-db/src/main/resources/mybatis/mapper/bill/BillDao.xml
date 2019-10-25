@@ -20,7 +20,7 @@
     </update>
 
     <select id="queryBills" parameterType="com.bosssoft.nontax.entity.Bill" resultType="com.bosssoft.nontax.entity.Bill">
-        SELECT * FROM une_cbill WHERE  agencode = #{agencode} AND date > #{date} AND id = #{id}
+        SELECT * FROM une_cbill WHERE  agencode = #{agencode}  AND date BETWEEN #{date} AND #{date}
     </select>
 
 </mapper>
