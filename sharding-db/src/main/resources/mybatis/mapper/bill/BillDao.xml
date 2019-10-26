@@ -3,6 +3,19 @@
 
 <mapper namespace="com.bosssoft.nontax.dao.BillDao">
 
+    <resultMap id="billMap" type="com.bosssoft.nontax.entity.Bill">
+        <id column="id" property="id"></id>
+        <result property="agencode" column="agencode"/>
+        <result property="date" column="date"/>
+        <result property="no" column="no"/>
+        <collection property="billItems" ofType="com.bosssoft.nontax.entity.BillItem">
+            <result property="fpid" column="fpid"/>
+            <result property="itemcode" column="itemcode"/>
+            <result property="date" column="date"/>
+            <result property="agencode" column="agencode"/>
+        </collection>
+    </resultMap>
+
     <insert id="insertBill" parameterType="com.bosssoft.nontax.entity.Bill">
         INSERT INTO une_cbill(id,agencode,date) VALUES (#{id},#{agencode},#{date})
     </insert>
@@ -23,7 +36,7 @@
         SELECT * FROM une_cbill WHERE  agencode = #{agencode}  AND date BETWEEN #{date} AND #{date}
     </select>
     
-    <select id="queryBillWithItems" parameterType="com.bosssoft.nontax.entity.Bill" resultType="com.bosssoft.nontax.entity.Bill">
+    <select id="queryBillWithItems" parameterType="com.bosssoft.nontax.entity.Bill" resultMap="billMap">
         SELECT * FROM une_cbill cbill LEFT JOIN une_cbill_item item ON cbill.id = item.fpid AND cbill.date = item.date
         WHERE  cbill.id = #{id} AND cbill.date = #{date} AND cbill.agencode = #{agencode}
     </select>
