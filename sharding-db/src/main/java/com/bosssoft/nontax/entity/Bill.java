@@ -2,6 +2,8 @@ package com.bosssoft.nontax.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Bill {
 
@@ -16,4 +18,7 @@ public class Bill {
 
     //票号
     private String no;
+
+    //项目明细
+    private List<BillItem> billItems;
 }

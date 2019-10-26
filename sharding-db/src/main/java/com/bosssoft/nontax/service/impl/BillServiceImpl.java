@@ -34,4 +34,9 @@ public class BillServiceImpl implements BillService {
     public List<Bill> queryBills(Bill bill) {
         return billDao.queryBills(bill);
     }
+
+    @Override
+    public Bill queryBillWithItems(Bill bill) {
+        return billDao.queryBillWithItems(bill);
+    }
 }

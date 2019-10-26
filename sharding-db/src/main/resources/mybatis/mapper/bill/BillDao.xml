@@ -22,5 +22,10 @@
     <select id="queryBills" parameterType="com.bosssoft.nontax.entity.Bill" resultType="com.bosssoft.nontax.entity.Bill">
         SELECT * FROM une_cbill WHERE  agencode = #{agencode}  AND date BETWEEN #{date} AND #{date}
     </select>
+    
+    <select id="queryBillWithItems" parameterType="com.bosssoft.nontax.entity.Bill" resultType="com.bosssoft.nontax.entity.Bill">
+        SELECT * FROM une_cbill cbill LEFT JOIN une_cbill_item item ON cbill.id = item.fpid AND cbill.date = item.date
+        WHERE  cbill.id = #{id} AND cbill.date = #{date} AND cbill.agencode = #{agencode}
+    </select>
 
 </mapper>

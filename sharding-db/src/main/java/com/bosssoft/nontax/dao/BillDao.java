@@ -15,4 +15,6 @@ public interface BillDao {
     int updateBill(Bill bill);
 
     List<Bill> queryBills(Bill bill);
+
+    Bill queryBillWithItems(Bill bill);
 }

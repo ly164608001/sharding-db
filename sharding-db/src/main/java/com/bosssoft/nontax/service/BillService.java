@@ -14,4 +14,6 @@ public interface BillService {
 
     List<Bill> queryBills(Bill bill);
 
+    Bill queryBillWithItems(Bill bill);
+
 }

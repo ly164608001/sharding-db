@@ -56,4 +56,14 @@ public class BillController {
         bill.setDate("2018-01-01");
         return billService.queryBills(bill);
     }
+
+    @RequestMapping(value = "/getBillWithItem", method = RequestMethod.GET)
+    @ResponseBody
+    public Bill getBillWithItem(){
+        Bill bill = new Bill();
+        bill.setId(1187301495733878784l);
+        bill.setDate("2018-01-01");
+        bill.setAgencode("350518");
+        return billService.queryBillWithItems(bill);
+    }
 }
