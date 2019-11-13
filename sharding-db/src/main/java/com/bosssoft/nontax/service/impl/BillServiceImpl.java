@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BillServiceImpl implements BillService {
@@ -38,5 +39,15 @@ public class BillServiceImpl implements BillService {
     @Override
     public Bill queryBillWithItems(Bill bill) {
         return billDao.queryBillWithItems(bill);
+    }
+
+    @Override
+    public Bill getBillWithNoShardingTable(Bill bill) {
+        return billDao.getBillWithNoShardingTable(bill);
+    }
+
+    @Override
+    public Map getInfoUseDefaultDataSource(String fid) {
+        return billDao.getInfoUseDefaultDataSource(fid);
     }
 }

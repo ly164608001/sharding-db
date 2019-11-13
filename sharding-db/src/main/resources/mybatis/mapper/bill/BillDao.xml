@@ -41,4 +41,14 @@
         WHERE  cbill.id = #{id} AND cbill.date = #{date} AND cbill.agencode = #{agencode}
     </select>
 
+    <select id="getBillWithNoShardingTable" parameterType="com.bosssoft.nontax.entity.Bill" resultMap="billMap">
+        SELECT * FROM une_cbill cbill LEFT JOIN une_paybook paybook ON cbill.fpaycode = paybook.fpaycode AND cbill.date = item.date
+        WHERE  cbill.id = #{id} AND cbill.date = #{date} AND cbill.agencode = #{agencode}
+    </select>
+
+    <select id="getInfoUseDefaultDataSource" resultType="hashmap">
+        SELECT * FROM une_paybook paybook
+        WHERE  paybook.fid = #{fid}
+    </select>
+
 </mapper>

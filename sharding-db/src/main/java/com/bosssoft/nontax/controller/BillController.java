@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 
 @RequestMapping("/bill")
@@ -65,5 +66,21 @@ public class BillController {
         bill.setDate("2018-01-01");
         bill.setAgencode("350518");
         return billService.queryBillWithItems(bill);
+    }
+
+    @RequestMapping(value = "/getBillWithNoShardingTable", method = RequestMethod.GET)
+    @ResponseBody
+    public Bill getBillWithNoShardingTable(){
+        Bill bill = new Bill();
+        bill.setId(1187301495733878784l);
+        bill.setDate("2018-01-03");
+        bill.setAgencode("350518");
+        return billService.getBillWithNoShardingTable(bill);
+    }
+
+    @RequestMapping(value = "/getInfoUseDefaultDataSource", method = RequestMethod.GET)
+    @ResponseBody
+    public Map getInfoUseDefaultDataSource(){
+        return billService.getInfoUseDefaultDataSource("123");
     }
 }
